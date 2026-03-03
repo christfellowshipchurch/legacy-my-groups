@@ -9,6 +9,8 @@ import {
 } from 'hooks';
 import { useAuth, update as updateAuth } from 'providers/AuthProvider';
 import { hideModal, useModalDispatch } from 'providers/ModalProvider';
+import { useAuthFlow } from 'components/Modals/AuthModal/AuthFlowContext';
+import { useRouter } from 'next/router';
 import { Box, Button, TextInput } from 'ui-kit';
 import ResendCode from './ResendCode';
 import ResetPassword from './ResetPassword';
@@ -33,6 +35,8 @@ function AuthConfirm() {
   const [error, setError] = useState(null);
   const [state, dispatch] = useAuth();
   const modalDispatch = useModalDispatch();
+  const { isPage, redirectPath } = useAuthFlow();
+  const router = useRouter();
 
   const [registerUserWithSms] = useRegisterWithSms();
   const [registerUserWithEmail] = useRegisterWithEmail();
@@ -48,8 +52,12 @@ function AuthConfirm() {
   const onSuccess = token => {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
-    modalDispatch(hideModal());
-    state?.onSuccess();
+    if (isPage) {
+      router.push(redirectPath || '/groups');
+    } else {
+      modalDispatch(hideModal());
+      state?.onSuccess();
+    }
   };
   const { values, handleChange, handleSubmit } = useForm(async () => {
     const passcode = values.passcode;

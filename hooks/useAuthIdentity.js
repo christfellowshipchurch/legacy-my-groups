@@ -4,12 +4,14 @@ import { validateEmail, validatePhoneNumber } from 'utils';
 import { useAuth, update as updateAuth } from 'providers/AuthProvider';
 import { useRequestPin } from './';
 import { showStep, useModalDispatch } from 'providers/ModalProvider';
+import { useAuthFlow } from 'components/Modals/AuthModal/AuthFlowContext';
 
 function useAuthIdentity() {
   const [status, setStatus] = useState('IDLE');
   const [error, setError] = useState(null);
   const [state, dispatch] = useAuth();
   const modalDispatch = useModalDispatch();
+  const { isPage, setStep } = useAuthFlow();
   const [requestPin] = useRequestPin();
 
   async function handleAuthIdentity({
@@ -35,7 +37,11 @@ function useAuthIdentity() {
           userProfile,
         })
       );
-      modalDispatch(showStep(step));
+      if (isPage && setStep) {
+        setStep(step);
+      } else {
+        modalDispatch(showStep(step));
+      }
     };
 
     const onError = requestError => {
