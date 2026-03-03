@@ -37,4 +37,4 @@ yarn-error.log*
 # sitemap
 sitemap.xml
 sitemap-*.xml
-robots.txt
+robots.txt.worktrees/
