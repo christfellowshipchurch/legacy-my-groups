@@ -46,7 +46,7 @@ export default function LoginPage() {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            flex={{ lg: '2' }}
+            flex={{ _: '1', md: '2' }}
             px={{ _: 'base', md: 'xl' }}
             py="xl"
             bg="white"
