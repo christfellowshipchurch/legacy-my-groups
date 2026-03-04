@@ -53,7 +53,7 @@ function AuthConfirm() {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
     if (isPage) {
-      router.push(redirectPath || '/groups');
+      router.push(redirectPath || '/connect');
     } else {
       modalDispatch(hideModal());
       state?.onSuccess();
@@ -142,13 +142,8 @@ function AuthConfirm() {
       <Box as="p" mb="l">
         {COPY.DESCRIPTION[descriptionKey]}
       </Box>
-      <Box
-        as="form"
-        action=""
-        onSubmit={handleSubmit}
-        px={{ md: 'l', lg: 'xl' }}
-      >
-        <Box mb="l">
+      <Box as="form" action="" onSubmit={handleSubmit}>
+        <Box mb="base">
           <TextInput
             id="passcode"
             type={state.type === 'password' ? 'password' : 'text'}
@@ -164,7 +159,13 @@ function AuthConfirm() {
           ) : null}
         </Box>
         <Box textAlign="center">
-          <Button type="submit" status={status} mb="base">
+          <Button
+            type="submit"
+            status={status}
+            width="100%"
+            fontWeight="normal"
+            mb="base"
+          >
             Submit{isLoading ? 'ting...' : ''}
           </Button>
           <ResendCode />

@@ -5,16 +5,11 @@ import { getAge } from 'utils';
 import { useAuthIdentity, useForm } from 'hooks';
 
 import { BirthDateField, GenderField } from 'components';
-import { Box, Button, TextInput } from 'ui-kit';
+import { Box, Button, Checkbox, TextInput } from 'ui-kit';
 
 function AuthDetails() {
-  const {
-    error,
-    setError,
-    status,
-    setStatus,
-    handleAuthIdentity,
-  } = useAuthIdentity();
+  const { error, setError, status, setStatus, handleAuthIdentity } =
+    useAuthIdentity();
   const { values, handleSubmit, handleChange } = useForm(() => {
     const age = getAge(values.birthDate);
     // Make sure they are at least 13 years of age.
@@ -39,11 +34,11 @@ function AuthDetails() {
 
   return (
     <>
-      <Box as="p" color="subdued" mb="l">
+      <Box as="p" mb="l">
         Help us learn a little more about you so we can connect you with the
         best ministries and events.
       </Box>
-      <Box as="form" action="" onSubmit={handleSubmit} px="l">
+      <Box as="form" action="" onSubmit={handleSubmit}>
         <Box
           display="grid"
           gridTemplateColumns="repeat(2, 1fr)"
@@ -82,7 +77,7 @@ function AuthDetails() {
           display="grid"
           gridTemplateColumns={{ lg: 'repeat(2, 1fr)' }}
           gridColumnGap="base"
-          mb="l"
+          mb="base"
         >
           <Box>
             <BirthDateField onChange={handleChange} error={error?.birthDate} />
@@ -94,8 +89,27 @@ function AuthDetails() {
             />
           </Box>
         </Box>
+        <Box mb="base" display="flex">
+          <Checkbox id="agreement" required onChange={handleChange} mr="s" />
+          <Box as="p" fontSize="s">
+            I agree to the&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="/terms-of-use">
+              Terms of Use
+            </a>
+            &nbsp;and&nbsp;
+            <a target="_blank" rel="noopener noreferrer" href="/privacy-policy">
+              Privacy Policy
+            </a>
+            &nbsp;laid out by Christ Fellowship Church.
+          </Box>
+        </Box>
         <Box textAlign="center">
-          <Button type="submit" status={status} mb="base">
+          <Button
+            type="submit"
+            status={status}
+            width="100%"
+            fontWeight="normal"
+          >
             Finish{isLoading ? 'ing...' : ''}
           </Button>
         </Box>

@@ -7,7 +7,7 @@ import Details from 'components/Modals/AuthModal/AuthDetails';
 import Confirm from 'components/Modals/AuthModal/AuthConfirm';
 import Success from 'components/Modals/AuthModal/AuthSuccess';
 import { Logo } from 'components';
-import { Box, Icon } from 'ui-kit';
+import { Box, Image } from 'ui-kit';
 
 function renderStep(step) {
   switch (step) {
@@ -31,73 +31,100 @@ export default function LoginPage() {
         <title>Login | My Groups</title>
       </Head>
       <AuthFlowContext.Provider
-        value={{ isPage: true, step, setStep, redirectPath: '/groups' }}
+        value={{ isPage: true, step, setStep, redirectPath: '/connect' }}
       >
         <Box
           display="flex"
           flexDirection={{ _: 'column', lg: 'row' }}
           minHeight="100vh"
+          position="relative"
         >
+          <Logo position="absolute" top="24px" left="24px" />
           {/* Left column — white, form area */}
           <Box
             display="flex"
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            flex={{ lg: '1' }}
+            flex={{ lg: '2' }}
             px={{ _: 'base', md: 'xl' }}
             py="xl"
             bg="white"
           >
             <Box width="100%" maxWidth="420px">
-              <Box mb="base">
-                <Box as="p" fontSize="s" color="subdued" mb="s">
-                  My Groups Login
-                </Box>
-                <Logo />
-              </Box>
-
-              <Box as="h1" fontSize={{ _: 'h3', md: 'h2' }} mb="s">
+              <Box
+                as="h1"
+                color="secondary"
+                fontSize={{ _: 'h3', md: 'h2' }}
+                mb="s"
+              >
                 My Groups &amp; Classes
-              </Box>
-              <Box as="p" color="subdued" mb="l">
-                Enter your phone number or email address to get started.
               </Box>
 
               {renderStep(step)}
 
-              <Box mt="l" textAlign="center">
-                <Box as="p" fontSize="s" color="subdued">
-                  Don&apos;t have an account?{' '}
-                  <Box
-                    as="a"
-                    href="/login"
-                    onClick={e => {
-                      e.preventDefault();
-                      setStep(0);
-                    }}
-                    color="primary"
-                    fontWeight="bold"
-                  >
-                    Sign Up
+              {step === 0 && (
+                <Box mt="l" textAlign="center">
+                  <Box as="p" fontSize="s">
+                    Don&apos;t have an account?{' '}
+                    <Box
+                      as="a"
+                      href="/login"
+                      onClick={e => {
+                        e.preventDefault();
+                        setStep(1);
+                      }}
+                      color="neutrals.800"
+                    >
+                      Sign Up
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-
-              <Box mt="xl" textAlign="center">
-                <Box as="p" fontSize="s" color="subdued">
-                  <Box
-                    as="a"
-                    href="/privacy-policy"
-                    color="subdued"
-                    mr="base"
-                  >
-                    Privacy Policy
+              )}
+              {step === 1 && (
+                <Box mt="l" textAlign="center">
+                  <Box as="p" fontSize="s">
+                    Already have an account?{' '}
+                    <Box
+                      as="a"
+                      href="/login"
+                      onClick={e => {
+                        e.preventDefault();
+                        setStep(0);
+                      }}
+                      color="neutrals.800"
+                    >
+                      Sign In
+                    </Box>
                   </Box>
-                  {' | '}
-                  <Box as="a" href="/terms-of-use" color="subdued" ml="base">
-                    Terms of Service
+                </Box>
+              )}
+              {step === 2 && (
+                <Box mt="l" textAlign="center">
+                  <Box as="p" fontSize="s">
+                    <Box
+                      as="a"
+                      href="/login"
+                      onClick={e => {
+                        e.preventDefault();
+                        setStep(0);
+                      }}
+                      color="neutrals.800"
+                    >
+                      Back to Sign In
+                    </Box>
                   </Box>
+                </Box>
+              )}
+            </Box>
+            <Box mt="xl" position="absolute" bottom="24px">
+              <Box as="p" fontSize="s">
+                <Box as="a" href="/privacy-policy" mr="base">
+                  Privacy Policy
+                </Box>
+                {' | '}
+                <Box as="a" href="/terms-of-use" ml="base">
+                  Terms of Service
                 </Box>
               </Box>
             </Box>
@@ -109,47 +136,19 @@ export default function LoginPage() {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            flex="1"
+            flex="3"
             position="relative"
             style={{
               background: 'linear-gradient(135deg, #0092bc 0%, #004f71 100%)',
               overflow: 'hidden',
             }}
           >
-            {/* Decorative icon: house */}
-            <Box
-              position="absolute"
-              style={{ top: '12%', left: '10%', opacity: 0.15 }}
-            >
-              <Icon name="houseHeartThin" color="white" size="120" />
-            </Box>
-
-            {/* Decorative icon: user */}
-            <Box
-              position="absolute"
-              style={{ bottom: '15%', right: '8%', opacity: 0.15 }}
-            >
-              <Icon name="user" color="white" size="100" />
-            </Box>
-
-            {/* Decorative icon: calendar */}
-            <Box
-              position="absolute"
-              style={{ top: '55%', left: '15%', opacity: 0.15 }}
-            >
-              <Icon name="calendar" color="white" size="80" />
-            </Box>
-
-            {/* Main content */}
-            <Box textAlign="center" px="xl" position="relative" zIndex="1">
-              <Icon name="houseHeartThin" color="white" size="72" mb="l" />
-              <Box as="h2" color="white" mb="base">
-                Connect with your community
-              </Box>
-              <Box as="p" color="white" style={{ opacity: 0.85 }}>
-                Find groups and classes that help you grow, serve, and belong.
-              </Box>
-            </Box>
+            <Image
+              source="https://cloudfront.christfellowship.church/GetImage.ashx?id=3141245"
+              altText="Login Background"
+              objectFit="contain"
+              px="xl"
+            />
           </Box>
         </Box>
       </AuthFlowContext.Provider>
