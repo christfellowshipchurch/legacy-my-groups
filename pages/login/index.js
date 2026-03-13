@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
+import { useAuth } from 'providers/AuthProvider';
 import AuthFlowContext from 'components/Modals/AuthModal/AuthFlowContext';
 import Identity from 'components/Modals/AuthModal/AuthIdentity';
 import Details from 'components/Modals/AuthModal/AuthDetails';
@@ -23,7 +25,15 @@ function renderStep(step) {
 }
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [{ authenticated }] = useAuth();
   const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (authenticated) {
+      router.replace('/connect');
+    }
+  }, [authenticated, router]);
 
   return (
     <>
