@@ -21,10 +21,13 @@ function AuthDetails() {
     if (!error) {
       setStatus('LOADING');
 
-      const userProfile = Object.keys(values).map(key => ({
-        field: upperFirst(key),
-        value: values[key],
-      }));
+      const profileFieldKeys = ['firstName', 'lastName', 'birthDate', 'gender'];
+      const userProfile = Object.keys(values)
+        .filter(key => profileFieldKeys.includes(key))
+        .map(key => ({
+          field: upperFirst(key),
+          value: values[key],
+        }));
 
       handleAuthIdentity({ nextStep: 2, userProfile });
     }

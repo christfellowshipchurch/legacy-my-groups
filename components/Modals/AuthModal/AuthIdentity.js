@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { validateEmail, validatePhoneNumber } from 'utils';
 import { useAuthIdentity, useForm, useUserExists } from 'hooks';
+import { useAuthFlow } from 'components/Modals/AuthModal/AuthFlowContext';
 import { Box, Button, TextInput } from 'ui-kit';
 
 function AuthIdentity() {
   const { status, setStatus, error, setError, handleAuthIdentity } =
     useAuthIdentity();
+  const { mode = 'login' } = useAuthFlow();
+
+  useEffect(() => {
+    if (mode === 'login') {
+      setError(null);
+      setStatus('IDLE');
+    }
+  }, [mode, setError, setStatus]);
   const [checkIfUserExists] = useUserExists({
     fetchPolicy: 'network-only',
     onCompleted: async data => {
       const identity = values.identity;
       const userExists = data?.userExists !== 'NONE';
+
+      if (mode === 'signup' && userExists) {
+        setStatus('ERROR');
+        setError({
+          identity:
+            "Looks like this email or phone number has already been used to create an account. Please sign in below.",
+        });
+        return;
+      }
 
       handleAuthIdentity({
         identity,
@@ -37,10 +55,16 @@ function AuthIdentity() {
 
   const isLoading = status === 'LOADING';
 
+  const description =
+    mode === 'signup'
+      ? 'Enter your phone number or email address to create your account.'
+      : 'Enter your phone number or email address to get started.';
+  const buttonLabel = mode === 'signup' ? 'Continue' : 'Login';
+
   return (
     <>
       <Box as="p" mb="l">
-        Enter your phone number or email address to get started.
+        {description}
       </Box>
       <Box as="form" action="" onSubmit={handleSubmit}>
         <Box mb="base">
@@ -64,7 +88,7 @@ function AuthIdentity() {
             width="100%"
             fontWeight="normal"
           >
-            {isLoading ? 'Loading...' : 'Login'}
+            {isLoading ? 'Loading...' : buttonLabel}
           </Button>
         </Box>
       </Box>

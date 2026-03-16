@@ -28,6 +28,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [{ authenticated }] = useAuth();
   const [step, setStep] = useState(0);
+  const [mode, setMode] = useState('login');
 
   useEffect(() => {
     if (authenticated) {
@@ -41,7 +42,14 @@ export default function LoginPage() {
         <title>Login | My Groups</title>
       </Head>
       <AuthFlowContext.Provider
-        value={{ isPage: true, step, setStep, redirectPath: '/connect' }}
+        value={{
+          isPage: true,
+          step,
+          setStep,
+          redirectPath: '/connect',
+          mode,
+          setMode,
+        }}
       >
         <Box
           display="flex"
@@ -73,7 +81,7 @@ export default function LoginPage() {
 
               {renderStep(step)}
 
-              {step === 0 && (
+              {step === 0 && mode === 'login' && (
                 <Box mt="l" textAlign="center">
                   <Box as="p" fontSize="s">
                     Don&apos;t have an account?{' '}
@@ -82,7 +90,8 @@ export default function LoginPage() {
                       href="/login"
                       onClick={e => {
                         e.preventDefault();
-                        setStep(1);
+                        setMode('signup');
+                        setStep(0);
                       }}
                       color="neutrals.800"
                     >
@@ -91,7 +100,7 @@ export default function LoginPage() {
                   </Box>
                 </Box>
               )}
-              {step === 1 && (
+              {(step === 0 && mode === 'signup') || step === 1 ? (
                 <Box mt="l" textAlign="center">
                   <Box as="p" fontSize="s">
                     Already have an account?{' '}
@@ -100,6 +109,7 @@ export default function LoginPage() {
                       href="/login"
                       onClick={e => {
                         e.preventDefault();
+                        setMode('login');
                         setStep(0);
                       }}
                       color="neutrals.800"
@@ -108,7 +118,7 @@ export default function LoginPage() {
                     </Box>
                   </Box>
                 </Box>
-              )}
+              ) : null}
               {step === 2 && (
                 <Box mt="l" textAlign="center">
                   <Box as="p" fontSize="s">
@@ -117,6 +127,7 @@ export default function LoginPage() {
                       href="/login"
                       onClick={e => {
                         e.preventDefault();
+                        setMode('login');
                         setStep(0);
                       }}
                       color="neutrals.800"

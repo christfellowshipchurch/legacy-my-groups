@@ -28,7 +28,20 @@ const COPY = {
     sms: 'Confirmation Code',
     password: 'Password',
   },
+  SIGNUP_ERROR_FALLBACK:
+    "We couldn't create your account. Please check your details and try again.",
 };
+
+function getErrorMessageFromApollo(err) {
+  if (!err) return null;
+  const firstGraphQL = err.graphQLErrors?.[0]?.message;
+  if (firstGraphQL) return firstGraphQL;
+  const result = err.networkError?.result;
+  if (result?.errors?.length) return result.errors[0].message ?? result.errors[0];
+  if (typeof result?.message === 'string') return result.message;
+  if (err.message) return err.message;
+  return null;
+}
 
 function AuthConfirm() {
   const [status, setStatus] = useState('IDLE');
@@ -43,11 +56,13 @@ function AuthConfirm() {
   const [verifyPin] = useVerifyPin();
   const [authenticateCredentials] = useAuthenticateCredentials();
 
-  const onError = () => {
+  const onError = (err) => {
     setStatus('ERROR');
-    setError({
-      passcode: `The ${COPY.LABEL[state.type]} you entered is incorrect.`,
-    });
+    const isSignupPassword = state.type === 'password' && !state.userExists;
+    const message = isSignupPassword
+      ? (getErrorMessageFromApollo(err) || COPY.SIGNUP_ERROR_FALLBACK)
+      : `The ${COPY.LABEL[state.type]} you entered is incorrect.`;
+    setError({ passcode: message });
   };
   const onSuccess = token => {
     setStatus('SUCCESS');
@@ -126,7 +141,7 @@ function AuthConfirm() {
           });
         }
       } catch (error) {
-        onError();
+        onError(error);
         console.log(error);
       }
     }
