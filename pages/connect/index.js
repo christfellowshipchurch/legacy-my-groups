@@ -35,7 +35,7 @@ export default function Connect(props = {}) {
       (!authenticated && rockPersonId === null)
     ) {
       setLoadingMessage('User not logged in');
-      router.push('/');
+      router.push('/login');
     }
   }, [authenticated, rockPersonId]); // eslint-disable-line
 

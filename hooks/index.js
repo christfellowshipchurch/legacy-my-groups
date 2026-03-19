@@ -8,37 +8,25 @@ import useCampus from './useCampus';
 import useCampuses from './useCampuses';
 import useCheckIn from './useCheckIn';
 import useContactGroupLeader from './useContactGroupLeader';
-import useContentBlockFeature from './useContentBlockFeature';
-import useContentFeed from './useNodeRoute';
 import useContentItem from './useContentItem';
 import useCurrentBreakpoint from './useCurrentBreakpoint';
 import useCurrentChatUser from './useCurrentChatUser';
 import useCurrentPerson from './useCurrentPerson';
 import useCurrentUser from './useCurrentUser';
 import useCurrentUserRoleForChatChannel from './useCurrentUserRoleForChatChannel';
-import useDefinedValueList from './useDefinedValueList';
-import useDiscoverFilterCategories from './useDiscoverFilterCategories';
-import useDiscoverFilterCategoriesPreview from './useDiscoverFilterCategoriesPreview';
-import useDiscoverFilters from './useDiscoverFilters';
 import useEditGroupMember from './useEditGroupMember';
-import useEvent from './useEvent';
-import useEvents from './useEvents';
-import useEventsFeedFeatures from './useEventsFeedFeatures';
-import useExternalHomeActions from './useExternalHomeActions';
-import useFeature from './useFeature';
 import useFeatureAction from './useFeatureAction';
 import useFeatureFeed from './useFeatureFeed';
-import useFeedFeatures from './useFeedFeatures';
 import useForm from './useForm';
 import useGetTags from './useGetTags';
 import useGetTaggedItems from './useGetTaggedItems';
-import useGetTotalCampuses from './useGetTotalCampuses';
 import useGroup from './useGroup';
 import useGroupCoaches from './useGroupCoaches';
 import useGroupContentId from './useGroupContentId';
 import useGroupCoverImages from './useGroupCoverImages';
 import useGroupEmailRecipients from './useGroupEmailRecipients';
 import useGroupFacetFilters from './useGroupFacetFilters';
+import useGroupFilterOptions from './useGroupFilterOptions';
 import useGroupLeaders from './useGroupLeaders';
 import useGroupMember from './useGroupMember';
 import useGroupMembers from './useGroupMembers';
@@ -49,13 +37,6 @@ import useGroupPreferences from './useGroupPreferences';
 import useGroupPreferenceUpdates from './useGroupPreferenceUpdates';
 import useGroupResourceOptions from './useGroupResourceOptions';
 import useGroups from './useGroups';
-import useLinkTree from './useLinkTree';
-import useLiveStream from './useLiveStream';
-import useLiveStreams from './useLiveStreams';
-import useLiveStreamsQuery from './useLiveStreamsQuery';
-import useNode from './useNode';
-import useNodeActions from './useNodeActions';
-import useNodeRoute from './useNodeRoute';
 import useNotifyMeBanner from './useNotifyMeBanner';
 import useRegisterWithEmail from './useRegisterWithEmail';
 import useRegisterWithSms from './useRegisterWithSms';
@@ -63,13 +44,10 @@ import useRemoveGroupResource from './useRemoveGroupResource';
 import useRequestEmailPin from './useRequestEmailPin';
 import useRequestPasswordChange from './useRequestPasswordChange';
 import useRequestPin from './useRequestPin';
-import useSisterhoodPodcast from './useSisterhoodPodcast';
-import useSearchContentItems from './useSearchContentItems';
 import useSearchGroups from './useSearchGroups';
 import useSendGroupEmail from './useSendGroupEmail';
 import useSearchGroupMembers from './useSearchGroupMembers';
 import useSubmitConnectCard from './useSubmitConnectCard';
-import useSubmitSetReminder from './useSubmitSetReminder';
 import useUpdateCurrentUser from './useUpdateCurrentUser';
 import useUpdateGroupCoverImage from './useUpdateGroupCoverImage';
 import useUpdateGroupResourceContentItem from './useUpdateGroupResourceContentItem';
@@ -88,37 +66,25 @@ export {
   useCampuses,
   useCheckIn,
   useContactGroupLeader,
-  useContentBlockFeature,
-  useContentFeed,
   useContentItem,
   useCurrentBreakpoint,
   useCurrentChatUser,
   useCurrentPerson,
   useCurrentUser,
   useCurrentUserRoleForChatChannel,
-  useDefinedValueList,
-  useDiscoverFilterCategories,
-  useDiscoverFilterCategoriesPreview,
-  useDiscoverFilters,
   useEditGroupMember,
-  useEvent,
-  useEvents,
-  useEventsFeedFeatures,
-  useExternalHomeActions,
-  useFeature,
   useFeatureAction,
   useFeatureFeed,
-  useFeedFeatures,
   useForm,
   useGetTags,
   useGetTaggedItems,
-  useGetTotalCampuses,
   useGroup,
   useGroupCoaches,
   useGroupContentId,
   useGroupCoverImages,
   useGroupEmailRecipients,
   useGroupFacetFilters,
+  useGroupFilterOptions,
   useGroupLeaders,
   useGroupMember,
   useGroupMembers,
@@ -129,13 +95,6 @@ export {
   useGroupPreferenceUpdates,
   useGroupResourceOptions,
   useGroups,
-  useLinkTree,
-  useLiveStream,
-  useLiveStreams,
-  useLiveStreamsQuery,
-  useNode,
-  useNodeActions,
-  useNodeRoute,
   useNotifyMeBanner,
   useRegisterWithEmail,
   useRegisterWithSms,
@@ -143,13 +102,10 @@ export {
   useRequestEmailPin,
   useRequestPasswordChange,
   useRequestPin,
-  useSearchContentItems,
   useSearchGroups,
   useSendGroupEmail,
   useSearchGroupMembers,
-  useSisterhoodPodcast,
   useSubmitConnectCard,
-  useSubmitSetReminder,
   useUpdateCurrentUser,
   useUpdateGroupCoverImage,
   useUpdateGroupResourceContentItem,
