@@ -9,7 +9,7 @@ export default function IndexPage() {
 
   useEffect(() => {
     if (authenticated) {
-      router.replace('/connect');
+      router.replace('/my-groups');
     } else if (rockPersonId === 'invalid' || rockPersonId === null) {
       router.replace('/login');
     }

@@ -18,7 +18,7 @@ function DefaultHeader(props = {}) {
       {/* <ActionBannerProvider Component={ActionBanner} /> */}
       <Styled bg="white" position="relative" boxShadow="base" {...props}>
         {/* Next 13 doesn't support a tags as children of Link component so we need to add legacyBehavior prop */}
-        <Link legacyBehavior href={authenticated ? '/connect' : '/login'}>
+        <Link legacyBehavior href={authenticated ? '/my-groups' : '/login'}>
           <Box cursor="pointer" as={Logo} mx={{ _: 'auto', md: '0' }} mb="0" />
         </Link>
         <Nav {...props?.data} showMobileNav={props?.showMobileNav} />
