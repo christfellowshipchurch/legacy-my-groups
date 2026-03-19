@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { ActionBannerProvider } from 'providers';
+// import { ActionBannerProvider } from 'providers';
 import { Box, systemPropTypes } from 'ui-kit';
 import { Logo, Nav } from 'components';
 import Styled from './Header.styles';
 
-import ActionBanner from '../ActionBanner/ActionBanner';
+// import ActionBanner from '../ActionBanner/ActionBanner';
 import { useAuth } from 'providers/AuthProvider';
 
 function DefaultHeader(props = {}) {
@@ -14,10 +14,11 @@ function DefaultHeader(props = {}) {
 
   return (
     <>
-      <ActionBannerProvider Component={ActionBanner} />
+      {/* Will hide this for now as we are not using it */}
+      {/* <ActionBannerProvider Component={ActionBanner} /> */}
       <Styled bg="white" position="relative" boxShadow="base" {...props}>
         {/* Next 13 doesn't support a tags as children of Link component so we need to add legacyBehavior prop */}
-        <Link legacyBehavior href={authenticated ? '/home' : '/'}>
+        <Link legacyBehavior href={authenticated ? '/connect' : '/login'}>
           <Box cursor="pointer" as={Logo} mx={{ _: 'auto', md: '0' }} mb="0" />
         </Link>
         <Nav {...props?.data} showMobileNav={props?.showMobileNav} />
