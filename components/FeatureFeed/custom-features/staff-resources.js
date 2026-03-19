@@ -2,20 +2,21 @@ import React from 'react';
 import { Box, system } from 'ui-kit';
 import styled from 'styled-components';
 import { isEmpty, kebabCase } from 'lodash';
+import { getUrlFromRelatedNode } from 'utils';
 
-const StyledStaffCard = styled.img`
+const StyledStaffCardImage = styled.img`
   display: flex;
   align-items: center;
   aspect-ratio: 4/3;
   cursor: pointer;
   border-radius: 12px;
-  transition: transform 0.3s ease;
+  transition: opacity 0.3s ease;
   object-fit: cover;
   flex: 1;
   min-width: 200px;
 
   &:hover {
-    transform: scale(1.01);
+    opacity: 0.8;
   }
 
   ${system}
@@ -44,10 +45,16 @@ export default function StaffResourcesFeature({ edge, regex }) {
         style={{ gap: '16px', overflow: 'auto' }}
       >
         {edge?.cards?.map(card => (
-          <StyledStaffCard
+          <a
             key={card?.id}
-            src={card?.coverImage?.sources[0]?.uri}
-          />
+            href={`https://www.christfellowship.church/${getUrlFromRelatedNode(
+              card?.relatedNode
+            )}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <StyledStaffCardImage src={card?.coverImage?.sources[0]?.uri} />
+          </a>
         ))}
       </Box>
     </Box>
