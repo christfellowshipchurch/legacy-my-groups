@@ -101,10 +101,18 @@ const SectionTitle = styled.div`
   ${system}
 `;
 
-const ConnectCardButton = styled.button`
-  display: inline-flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+/** Same look as `FooterLink`; UA `<button>` defaults otherwise skew color/weight/line-height. */
+const ConnectCardButton = styled(FooterLink).attrs({
+  as: 'button',
+  type: 'button',
+})`
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  text-decoration: none;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -112,17 +120,7 @@ const ConnectCardButton = styled.button`
   border-radius: 0;
   background: transparent;
   cursor: pointer;
-  font-family: inherit;
-  font-size: ${themeGet('fontSizes.l')};
-  font-weight: 300;
-  color: ${COCONUT};
-  text-align: left;
-  min-height: 0;
-  transition: color 0.15s ease;
-
-  &:hover {
-    color: rgba(255, 255, 255, 0.5);
-  }
+  box-shadow: none;
 `;
 
 const VerticalRule = styled.div`

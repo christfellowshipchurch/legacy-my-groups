@@ -136,8 +136,8 @@ function LinkColumnsGrid() {
     <Box
       width="100%"
       borderTop="1px solid #417890"
-      pt="xl"
-      pb="xl"
+      pt={{ _: 'l', md: 'xl' }}
+      pb={{ _: 'l', md: 'xl' }}
       fontSize="l"
       color={COCONUT}
       display="grid"
@@ -147,7 +147,7 @@ function LinkColumnsGrid() {
         lg: 'repeat(5, minmax(0, 1fr))',
       }}
       gridColumnGap="base"
-      gridRowGap={{ _: 'xxl', md: 'l' }}
+      gridRowGap={{ _: 'base', md: 'l', lg: 'l' }}
     >
       <Box
         display="flex"
@@ -163,7 +163,7 @@ function LinkColumnsGrid() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          mt={{ _: '-l', md: '0' }}
+          mt={{ _: '-s', md: '0' }}
         >
           <Logo dark width="160" height="auto" mb="0" />
         </Box>

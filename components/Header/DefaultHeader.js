@@ -29,7 +29,11 @@ function DefaultHeader(props = {}) {
               mb="0"
             />
           </Link>
-          <Box display="flex" alignItems="center" gap="24px">
+          <Box
+            display={{ _: 'none', md: 'flex' }}
+            alignItems="center"
+            gap="24px"
+          >
             <StyledLink href="https://www.christfellowship.church/locations">
               About
             </StyledLink>
