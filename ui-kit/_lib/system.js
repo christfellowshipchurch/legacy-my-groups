@@ -101,6 +101,11 @@ const cursor = style({
   cssProperty: 'cursor',
 });
 
+const gap = style({
+  prop: 'gap',
+  key: 'space',
+});
+
 export const core = compose(color, fontSize, space, width);
 
 export const typography = compose(
@@ -133,6 +138,7 @@ export const flexbox = compose(
   flexDirection,
   flexGrow,
   flexWrap,
+  gap,
   justifyContent,
   justifySelf,
   order

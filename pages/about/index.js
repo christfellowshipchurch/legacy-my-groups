@@ -5,7 +5,7 @@ import { Layout, VerticalCardListFeature } from 'components';
 import { useRouter } from 'next/router';
 import { includes } from 'lodash';
 
-import Styled from './About.styles';
+import Styled from 'components/AboutPage/About.styles';
 
 import data from 'lib/aboutData';
 import { htmlToReactParser } from 'utils';
