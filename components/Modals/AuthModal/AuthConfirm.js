@@ -9,6 +9,8 @@ import {
 } from 'hooks';
 import { useAuth, update as updateAuth } from 'providers/AuthProvider';
 import { hideModal, useModalDispatch } from 'providers/ModalProvider';
+import { useAuthFlow } from 'components/Modals/AuthModal/AuthFlowContext';
+import { useRouter } from 'next/router';
 import { Box, Button, TextInput } from 'ui-kit';
 import ResendCode from './ResendCode';
 import ResetPassword from './ResetPassword';
@@ -26,30 +28,51 @@ const COPY = {
     sms: 'Confirmation Code',
     password: 'Password',
   },
+  SIGNUP_ERROR_FALLBACK:
+    "We couldn't create your account. Please check your details and try again.",
 };
+
+function getErrorMessageFromApollo(err) {
+  if (!err) return null;
+  const firstGraphQL = err.graphQLErrors?.[0]?.message;
+  if (firstGraphQL) return firstGraphQL;
+  const result = err.networkError?.result;
+  if (result?.errors?.length) return result.errors[0].message ?? result.errors[0];
+  if (typeof result?.message === 'string') return result.message;
+  if (err.message) return err.message;
+  return null;
+}
 
 function AuthConfirm() {
   const [status, setStatus] = useState('IDLE');
   const [error, setError] = useState(null);
   const [state, dispatch] = useAuth();
   const modalDispatch = useModalDispatch();
+  const { isPage, redirectPath } = useAuthFlow();
+  const router = useRouter();
 
   const [registerUserWithSms] = useRegisterWithSms();
   const [registerUserWithEmail] = useRegisterWithEmail();
   const [verifyPin] = useVerifyPin();
   const [authenticateCredentials] = useAuthenticateCredentials();
 
-  const onError = () => {
+  const onError = (err) => {
     setStatus('ERROR');
-    setError({
-      passcode: `The ${COPY.LABEL[state.type]} you entered is incorrect.`,
-    });
+    const isSignupPassword = state.type === 'password' && !state.userExists;
+    const message = isSignupPassword
+      ? (getErrorMessageFromApollo(err) || COPY.SIGNUP_ERROR_FALLBACK)
+      : `The ${COPY.LABEL[state.type]} you entered is incorrect.`;
+    setError({ passcode: message });
   };
   const onSuccess = token => {
     setStatus('SUCCESS');
     dispatch(updateAuth({ token }));
-    modalDispatch(hideModal());
-    state?.onSuccess();
+    if (isPage) {
+      router.push(redirectPath || '/connect');
+    } else {
+      modalDispatch(hideModal());
+      state?.onSuccess();
+    }
   };
   const { values, handleChange, handleSubmit } = useForm(async () => {
     const passcode = values.passcode;
@@ -118,7 +141,7 @@ function AuthConfirm() {
           });
         }
       } catch (error) {
-        onError();
+        onError(error);
         console.log(error);
       }
     }
@@ -134,13 +157,8 @@ function AuthConfirm() {
       <Box as="p" mb="l">
         {COPY.DESCRIPTION[descriptionKey]}
       </Box>
-      <Box
-        as="form"
-        action=""
-        onSubmit={handleSubmit}
-        px={{ md: 'l', lg: 'xl' }}
-      >
-        <Box mb="l">
+      <Box as="form" action="" onSubmit={handleSubmit}>
+        <Box mb="base">
           <TextInput
             id="passcode"
             type={state.type === 'password' ? 'password' : 'text'}
@@ -156,7 +174,13 @@ function AuthConfirm() {
           ) : null}
         </Box>
         <Box textAlign="center">
-          <Button type="submit" status={status} mb="base">
+          <Button
+            type="submit"
+            status={status}
+            width="100%"
+            fontWeight="normal"
+            mb="base"
+          >
             Submit{isLoading ? 'ting...' : ''}
           </Button>
           <ResendCode />

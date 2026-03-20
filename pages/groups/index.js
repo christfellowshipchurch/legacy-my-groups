@@ -67,7 +67,7 @@ export default function Community(props = {}) {
 
   function handleMyGroups(e) {
     const navigateToConnect = () => {
-      router.push('/connect');
+      router.push('/my-groups');
     };
 
     e.preventDefault();

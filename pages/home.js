@@ -24,7 +24,7 @@ function InternalHomeFeed() {
       (!authenticated && rockPersonId === 'invalid') ||
       (!authenticated && rockPersonId === null)
     ) {
-      router.push('/');
+      router.push('/login');
     }
   }, [authenticated, rockPersonId]); // eslint-disable-line
 

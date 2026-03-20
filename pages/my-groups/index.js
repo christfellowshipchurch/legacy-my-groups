@@ -8,14 +8,14 @@ import { useAnalytics } from 'providers/AnalyticsProvider';
 import { Layout, FeatureFeed } from 'components';
 import { Box, Cell, Loader, utils } from 'ui-kit';
 
-export default function Connect(props = {}) {
+export default function MyGroups(props = {}) {
   const router = useRouter();
   const analytics = useAnalytics();
   const [loadingMessage, setLoadingMessage] = useState('Loading');
   const [{ authenticated, rockPersonId }] = useAuth();
   const options = {
     variables: {
-      pathname: 'connect',
+      pathname: 'my-groups',
     },
   };
 
@@ -40,7 +40,7 @@ export default function Connect(props = {}) {
   }, [authenticated, rockPersonId]); // eslint-disable-line
 
   return (
-    <Layout title="Connect">
+    <Layout title="My Groups">
       <Cell
         as="main"
         maxWidth={utils.rem('1100px')}
