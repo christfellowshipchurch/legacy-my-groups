@@ -21,7 +21,7 @@ function DefaultHeader(props = {}) {
       <Styled bg="white" position="relative" boxShadow="base" {...props}>
         {/* Next 13 doesn't support a tags as children of Link component so we need to add legacyBehavior prop */}
         <Box display="flex" alignItems="center" gap="l" width="100%">
-          <Link legacyBehavior href={authenticated ? '/home' : '/'}>
+          <Link legacyBehavior href={authenticated ? '/my-groups' : '/login'}>
             <Box
               cursor="pointer"
               as={Logo}

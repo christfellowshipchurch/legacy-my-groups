@@ -129,7 +129,7 @@ module.exports = {
       },
       {
         source: '/locations/downtown-west-palm-beach',
-        destination: '/locations/trinity',
+        destination: '/locations/dwpb',
         permanent: true,
       },
       // {
