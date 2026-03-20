@@ -32,7 +32,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (authenticated) {
-      router.replace('/connect');
+      router.replace('/my-groups');
     }
   }, [authenticated, router]);
 
@@ -46,7 +46,7 @@ export default function LoginPage() {
           isPage: true,
           step,
           setStep,
-          redirectPath: '/connect',
+          redirectPath: '/my-groups',
           mode,
           setMode,
         }}
