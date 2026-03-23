@@ -17,7 +17,7 @@ function DefaultHeader(props = {}) {
 
   return (
     <>
-      <ActionBannerProvider Component={ActionBanner} />
+      {/* <ActionBannerProvider Component={ActionBanner} /> */}
       <Styled bg="white" position="relative" boxShadow="base" {...props}>
         {/* Next 13 doesn't support a tags as children of Link component so we need to add legacyBehavior prop */}
         <Box display="flex" alignItems="center" gap="l" width="100%">

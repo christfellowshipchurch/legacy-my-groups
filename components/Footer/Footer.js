@@ -79,6 +79,8 @@ function TopContactRow() {
         icon="location"
         label="Find Us"
         href="https://www.christfellowship.church/locations"
+        target="_blank"
+        rel="noopener noreferrer"
         cta="View Locations"
         pt={{ _: 'l', lg: '0' }}
         pb="0"
@@ -95,6 +97,8 @@ function ContactBlock({
   href,
   cta,
   emailCta = false,
+  target,
+  rel,
   ...boxProps
 }) {
   const CtaComponent = emailCta ? Styled.ContactCtaEmail : Styled.ContactCta;
@@ -125,7 +129,9 @@ function ContactBlock({
         flex="1"
       >
         <Styled.Muted>{label}</Styled.Muted>
-        <CtaComponent href={href}>{cta}</CtaComponent>
+        <CtaComponent href={href} target={target} rel={rel}>
+          {cta}
+        </CtaComponent>
       </Box>
     </Box>
   );
@@ -175,18 +181,24 @@ function LinkColumnsGrid() {
           >
             <SocialIcon
               href={links.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
               name="youtube"
               gtm="footer-link"
               linkName="youtube"
             />
             <SocialIcon
               href={links.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
               name="instagram"
               gtm="footer-link"
               linkName="instagram"
             />
             <SocialIcon
               href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               name="linkedIn"
               gtm="footer-link"
               linkName="linkedIn"
@@ -196,22 +208,43 @@ function LinkColumnsGrid() {
       </Box>
 
       <FooterColumn title="Resources">
-        <Styled.Link target="_blank" href={links.churchOnline}>
+        <Styled.Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href={links.churchOnline}
+        >
           Church Online
         </Styled.Link>
-        <Styled.Link target="_blank" href={links.pastMessages}>
+        <Styled.Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href={links.pastMessages}
+        >
           Past Messages
         </Styled.Link>
-        <Styled.Link href="/give">Give Online</Styled.Link>
+        <Styled.Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://christfellowship.church/give"
+        >
+          Give Online
+        </Styled.Link>
       </FooterColumn>
 
       <ConnectColumn />
 
       <FooterColumn title="About">
-        <CustomLink href="/about" Component={Styled.Link}>
+        <CustomLink
+          href="https://christfellowship.church/about"
+          Component={Styled.Link}
+          target="_blank"
+        >
           Our Leadership
         </CustomLink>
-        <Styled.Link href="/career-opportunities">
+        <Styled.Link
+          target="_blank"
+          href="https://christfellowship.church/career-opportunities"
+        >
           Career Opportunities
         </Styled.Link>
         <CustomLink href="/privacy-policy" Component={Styled.Link}>
@@ -266,12 +299,12 @@ function ConnectColumn() {
       <Styled.SectionTitle role="heading" aria-level={2}>
         Connect
       </Styled.SectionTitle>
-      <Styled.ConnectCardButton
-        type="button"
-        onClick={() => modalDispatch(showModal('ConnectCardModal'))}
+      <Styled.Link
+        target="_blank"
+        href="https://christfellowship.church/connect-card"
       >
         Connect Card
-      </Styled.ConnectCardButton>
+      </Styled.Link>
       <Styled.Link target="_blank" href={links.submitPrayerRequest}>
         Request Prayer
       </Styled.Link>
