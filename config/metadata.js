@@ -16,6 +16,9 @@ const metadata = {
     facebook: 'https://www.facebook.com/CFimpact/',
     instagram: 'https://www.instagram.com/christfellowship.church/',
     youtube: 'https://www.youtube.com/user/christfellowship',
+    linkedin: 'https://www.linkedin.com/company/christ-fellowship-church/',
+    subscribeMailchimp:
+      'https://church.us11.list-manage.com/subscribe?u=76848e191018191e2e2d01d77&id=3265404466',
     cfSeu: 'https://cfseu.com/',
     cfConf: 'https://www.christfellowshipconference.com/',
     cfApp: 'https://www.christfellowship.church/new-app-experience',

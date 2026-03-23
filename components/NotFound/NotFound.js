@@ -16,20 +16,32 @@ const NotFound = (props = {}) => {
   }
 
   const links = [
-    { title: 'Visit our homepage.', link: '/' },
+    { title: 'Visit our homepage.', link: 'https://christfellowship.church/' },
     {
       title: 'Find a Christ Fellowship location near you.',
-      link: '/locations',
+      link: 'https://christfellowship.church/locations',
     },
-    { title: 'Sign up for a Group or Class.', link: '/groups' },
+    {
+      title: 'Sign up for a Group or Class.',
+      link: 'https://christfellowship.church/groups',
+    },
     {
       title: 'Discover more about our Ministries.',
-      link: '/discover?c=ministries',
+      link: 'https://christfellowship.church/discover?c=ministries',
     },
-    { title: 'Learn more about Christ Fellowship.', link: '/about' },
-    { title: 'Get connected.', link: '/next-steps' },
-    { title: 'Give online.', link: '/give' },
-    { title: 'See upcoming events.', link: '/events' },
+    {
+      title: 'Learn more about Christ Fellowship.',
+      link: 'https://christfellowship.church/about',
+    },
+    {
+      title: 'Get connected.',
+      link: 'https://christfellowship.church/next-steps',
+    },
+    { title: 'Give online.', link: 'https://christfellowship.church/give' },
+    {
+      title: 'See upcoming events.',
+      link: 'https://christfellowship.church/events',
+    },
   ];
   return (
     <Box mt="xl" textAlign="center">
@@ -84,6 +96,7 @@ const NotFound = (props = {}) => {
                   as="a"
                   style={{ listStyleType: 'circle' }}
                   href={link?.link}
+                  target="_blank"
                 >
                   {link?.title}
                 </Box>

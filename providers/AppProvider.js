@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { ApolloProvider } from '@apollo/client';
 
 import { useApollo } from 'lib/apolloClient';
-import {
-  AnalyticsProvider,
-  AuthProvider,
-  ModalProvider,
-  GroupFiltersProvider,
-} from 'providers';
-import { ModalManager } from 'providers/ModalProvider';
+import AnalyticsProvider from './AnalyticsProvider';
+import AuthProvider from './AuthProvider';
+import GroupFiltersProvider from './GroupFiltersProvider';
+import ModalProvider, { ModalManager } from './ModalProvider';
 import modals from 'config/modals';
 import { ThemeProvider } from 'ui-kit';
 
