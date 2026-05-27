@@ -87,8 +87,17 @@ module.exports = {
       },
       {
         source: '/christ-birthday-offering',
-        destination:
-          'https://www.christfellowship.church/2024-christ-birthday-offering',
+        destination: 'https://www.impactoffering.church/',
+        permanent: true,
+      },
+      {
+        source: '/2023-christ-birthday-offering',
+        destination: 'https://www.impactoffering.church/',
+        permanent: true,
+      },
+      {
+        source: '/2024-christ-birthday-offering',
+        destination: 'https://www.impactoffering.church/',
         permanent: true,
       },
       {
@@ -132,14 +141,14 @@ module.exports = {
         destination: '/locations/dwpb',
         permanent: true,
       },
-      // {
-      //   source: '/easter',
-      //   destination: '/easter-2025',
-      //   permanent: true,
-      // },
+      {
+        source: '/easter',
+        destination: '/easter-2026',
+        permanent: true,
+      },
       {
         source: '/easter-espanol',
-        destination: '/easter-espanol-2024',
+        destination: '/easter-espanol-2026',
         permanent: true,
       },
       {
@@ -162,9 +171,24 @@ module.exports = {
         destination: 'https://www.christfellowshipconference.com/',
         permanent: true,
       },
+      // {
+      //   source: '/easter',
+      //   destination: 'https://www.easteratcf.com/',
+      //   permanent: true,
+      // },
       {
-        source: '/easter',
-        destination: 'https://www.easteratcf.com/',
+        source: '/easter-jam',
+        destination: '/easter-2026',
+        permanent: true,
+      },
+      {
+        source: '/camps',
+        destination: '/summer-camps-for-kids-and-students',
+        permanent: true,
+      },
+      {
+        source: '/camp',
+        destination: '/summer-camps-for-kids-and-students',
         permanent: true,
       },
       // TODO: Uncomment these lines to hide Group Finder.
