@@ -45,7 +45,7 @@ export default function MyGroups(props = {}) {
         as="main"
         maxWidth={utils.rem('1100px')}
         py={{ _: 's', lg: 'base' }}
-        bg="#F3F5FA"
+        bg="#FAFAFC"
       >
         {!authenticated ? (
           <Box my="xl" py="l">

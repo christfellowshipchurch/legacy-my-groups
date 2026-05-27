@@ -25,6 +25,7 @@ const SUCCESS = '#1ec27f';
 const WHITE = '#ffffff';
 const BLACK = '#000000';
 const WHITE_SMOKE = '#f6f6f6';
+const TEMP_EXPERIENCE_BACKGROUND = '#FAFAFC';
 
 //Campaign Colors
 const H4H_RED_2024 = '#E63E51';
@@ -79,7 +80,7 @@ const colors = {
     white: WHITE,
 
     // LEGACY!
-    bg: WHITE_SMOKE,
+    bg: TEMP_EXPERIENCE_BACKGROUND,
     fg: '#353535',
     subdued: COTTON_CANDY,
     border: '#cecece',

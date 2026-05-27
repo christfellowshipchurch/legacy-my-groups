@@ -8,12 +8,14 @@ import { ActionBannerProvider } from 'providers';
 import { Box, systemPropTypes } from 'ui-kit';
 import { Logo, Nav } from 'components';
 import { useCurrentBreakpoint } from 'hooks';
+import { useAuth } from 'providers/AuthProvider';
 import Styled from './Header.styles';
 import ActionBanner from '../ActionBanner/ActionBanner';
 
 function TransparentHeader(props = {}) {
   const [bgColor, setBgColor] = useState('transparent');
   const [navOpacity, setOpacity] = useState(1);
+  const [{ authenticated }] = useAuth();
 
   const currentBreakpoint = useCurrentBreakpoint();
 
@@ -47,10 +49,8 @@ function TransparentHeader(props = {}) {
           width="100%"
         >
           {/* Next 13 doesn't support a tags as children of Link comoonent so we need to add legacyBehavior prop */}
-          <Link legacyBehavior href="/">
-            <a href="!#">
-              <Box as={Logo} dark={true} mx={{ _: 'auto', md: '0' }} mb="0" />
-            </a>
+          <Link legacyBehavior href={authenticated ? '/my-groups' : '/login'}>
+            <Box as={Logo} dark={true} mx={{ _: 'auto', md: '0' }} mb="0" />
           </Link>
           <Nav
             transparentMode
