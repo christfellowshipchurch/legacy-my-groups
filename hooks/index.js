@@ -10,10 +10,8 @@ import useCheckIn from './useCheckIn';
 import useContactGroupLeader from './useContactGroupLeader';
 import useContentItem from './useContentItem';
 import useCurrentBreakpoint from './useCurrentBreakpoint';
-import useCurrentChatUser from './useCurrentChatUser';
 import useCurrentPerson from './useCurrentPerson';
 import useCurrentUser from './useCurrentUser';
-import useCurrentUserRoleForChatChannel from './useCurrentUserRoleForChatChannel';
 import useEditGroupMember from './useEditGroupMember';
 import useFeatureAction from './useFeatureAction';
 import useFeatureFeed from './useFeatureFeed';
@@ -68,10 +66,8 @@ export {
   useContactGroupLeader,
   useContentItem,
   useCurrentBreakpoint,
-  useCurrentChatUser,
   useCurrentPerson,
   useCurrentUser,
-  useCurrentUserRoleForChatChannel,
   useEditGroupMember,
   useFeatureAction,
   useFeatureFeed,

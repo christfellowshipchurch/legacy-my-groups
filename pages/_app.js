@@ -5,9 +5,6 @@ import JsonLD from 'components/JsonLD';
 import configureNProgress from 'config/nprogress';
 import { AppProvider } from 'providers';
 
-import 'stream-chat-react/dist/css/index.css';
-import './StreamChatOverrides.css';
-
 import 'react-quill/dist/quill.snow.css';
 
 import './merriweather.css';

@@ -3,7 +3,6 @@ import AnalyticsProvider from './AnalyticsProvider';
 import AppProvider from './AppProvider';
 import AuthProvider from './AuthProvider';
 import CampusesProvider from './CampusesProvider';
-import ChatConnectionProvider from './ChatConnectionProvider';
 import CommunitiesProvider from './CommunitiesProvider';
 import ContentItemProvider from './ContentItemProvider';
 import CurrentPersonProvider from './CurrentPersonProvider';
@@ -27,7 +26,6 @@ export {
   AppProvider,
   AuthProvider,
   CampusesProvider,
-  ChatConnectionProvider,
   CommunitiesProvider,
   ContentItemProvider,
   CurrentPersonProvider,

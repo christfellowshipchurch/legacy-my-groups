@@ -5,11 +5,9 @@ import { useRouter } from 'next/router';
 import { ContentLayout } from 'components';
 import { useCurrentBreakpoint, useCurrentUser, useCheckIn } from 'hooks';
 
-import { ChatConnectionProvider } from 'providers';
 import { currentUserIsMemberType, transformISODates } from 'utils';
 import { Box, Button, Card, Icon } from 'ui-kit';
 
-import GroupChat from './GroupChat';
 import GroupDateTime from './GroupDateTime';
 import GroupMembers from './GroupMembers';
 import GroupResources from './GroupResources';
@@ -108,18 +106,6 @@ function GroupSingle(props = {}) {
     </Box>
   );
 
-  const renderChat = () => (
-    <Box mb="l">
-      <Card>
-        <GroupChat
-          streamChatChannel={props.data?.streamChatChannel}
-          relatedNode={props.data}
-          pt="s"
-        />
-      </Card>
-    </Box>
-  );
-
   const renderAboutAndResources = () => (
     <Card p="base" mb="l">
       <Box as="h2" fontSize="h3">
@@ -136,20 +122,17 @@ function GroupSingle(props = {}) {
   // -----------------------------------
 
   return (
-    <ChatConnectionProvider>
-      <ContentLayout
-        mode={props.data.mode}
-        title={props.data?.title}
-        summary={transformISODates(props.data?.dateTime?.start, {
-          withTime: true,
-        })}
-        coverImage={props.data?.coverImage?.sources[0]?.uri}
-        renderContentB={renderMembers}
-        renderC={renderMeetingDetails}
-        renderD={renderChat}
-        renderE={renderAboutAndResources}
-      />
-    </ChatConnectionProvider>
+    <ContentLayout
+      mode={props.data.mode}
+      title={props.data?.title}
+      summary={transformISODates(props.data?.dateTime?.start, {
+        withTime: true,
+      })}
+      coverImage={props.data?.coverImage?.sources[0]?.uri}
+      renderContentB={renderMembers}
+      renderC={renderMeetingDetails}
+      renderE={renderAboutAndResources}
+    />
   );
 }
 
