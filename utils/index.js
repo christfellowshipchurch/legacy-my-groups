@@ -5,7 +5,9 @@ import dateTextFormat from './dateTextFormat';
 import formatPhoneNumber from './formatPhoneNumber';
 import getAge from './getAge';
 import getComponent from './getComponent';
-import getUrlFromRelatedNode from './getUrlFromRelatedNode';
+import getUrlFromRelatedNode, {
+  getAbsoluteUrlFromRelatedNode,
+} from './getUrlFromRelatedNode';
 import htmlToReactParser from './htmlToReactParser';
 import normalizeUserData from './normalizeUserData';
 import slugify from './slugify';
@@ -22,6 +24,7 @@ export {
   formatPhoneNumber,
   getAge,
   getComponent,
+  getAbsoluteUrlFromRelatedNode,
   getUrlFromRelatedNode,
   htmlToReactParser,
   normalizeUserData,
