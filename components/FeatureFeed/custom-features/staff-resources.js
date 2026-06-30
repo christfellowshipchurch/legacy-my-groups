@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, system } from 'ui-kit';
 import styled from 'styled-components';
 import { isEmpty, kebabCase } from 'lodash';
-import { getUrlFromRelatedNode } from 'utils';
+import { getAbsoluteUrlFromRelatedNode } from 'utils';
 
 const StyledStaffCardImage = styled.img`
   display: flex;
@@ -47,9 +47,7 @@ export default function StaffResourcesFeature({ edge, regex }) {
         {edge?.cards?.map(card => (
           <a
             key={card?.id}
-            href={`https://www.christfellowship.church/${getUrlFromRelatedNode(
-              card?.relatedNode
-            )}`}
+            href={getAbsoluteUrlFromRelatedNode(card?.relatedNode)}
             target="_blank"
             rel="noreferrer"
           >

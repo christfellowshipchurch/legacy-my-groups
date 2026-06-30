@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Icon, system } from 'ui-kit';
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { getUrlFromRelatedNode } from 'utils';
+import { getAbsoluteUrlFromRelatedNode } from 'utils';
 
 const StyledGroupCard = styled(Box)`
   display: flex;
@@ -62,11 +62,7 @@ export default function GeneralGroupResourcesFeature({ edge, regex }) {
           <StyledGroupCard
             key={card?.id}
             as="a"
-            href={
-              `https://www.christfellowship.church/${getUrlFromRelatedNode(
-                card?.relatedNode
-              )}` || '#'
-            }
+            href={getAbsoluteUrlFromRelatedNode(card?.relatedNode) || '#'}
             target="_blank"
             rel="noreferrer"
           >
