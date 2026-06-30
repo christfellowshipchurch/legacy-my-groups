@@ -21,7 +21,6 @@ export const GET_CURRENT_USER = gql`
         }
         phoneNumber
       }
-      streamChatToken
     }
   }
 `;

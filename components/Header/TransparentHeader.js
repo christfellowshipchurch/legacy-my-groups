@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
@@ -14,7 +13,6 @@ import ActionBanner from '../ActionBanner/ActionBanner';
 function TransparentHeader(props = {}) {
   const [bgColor, setBgColor] = useState('transparent');
   const [navOpacity, setOpacity] = useState(1);
-
   const currentBreakpoint = useCurrentBreakpoint();
 
   const offset = currentBreakpoint.isSmall ? 5 : 50;
@@ -46,12 +44,9 @@ function TransparentHeader(props = {}) {
           justifyContent="space-between"
           width="100%"
         >
-          {/* Next 13 doesn't support a tags as children of Link comoonent so we need to add legacyBehavior prop */}
-          <Link legacyBehavior href="/my-groups" passHref>
-            <a>
-              <Box as={Logo} dark={true} mx={{ _: 'auto', md: '0' }} mb="0" />
-            </a>
-          </Link>
+          <Box as="a" href="https://www.christfellowship.church/">
+            <Box as={Logo} dark={true} mx={{ _: 'auto', md: '0' }} mb="0" />
+          </Box>
           <Nav
             transparentMode
             showMobileNav={props?.showMobileNav}

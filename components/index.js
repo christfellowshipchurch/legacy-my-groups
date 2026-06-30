@@ -5,7 +5,6 @@ import AddToCalendar from './AddToCalendar';
 import AppHead from './AppHead';
 import AvatarListFeature from './AvatarListFeature';
 import BirthDateField from './BirthDateField';
-import Chat from './Chat';
 import ClientSideComponent from './ClientSideComponent';
 import CommunityActionSection from './CommunityActionSection';
 import CommunityLeaderActions from './CommunityLeaderActions';
@@ -55,7 +54,6 @@ export {
   AppHead,
   AvatarListFeature,
   BirthDateField,
-  Chat,
   ClientSideComponent,
   CommunityActionSection,
   CommunityLeaderActions,
