@@ -23,8 +23,17 @@ CardTitle.propTypes = {
 };
 
 export const SmallPillButton = ({ title, icon, ...props }) => (
-  <Button size="s" rounded variant="secondary" py="5px" {...props}>
-    {!isEmpty(icon) && <Icon name={icon} size="18" mb="2px" mr="2px" />}
+  <Button
+    size="s"
+    rounded
+    variant="secondary"
+    py="10px"
+    display="inline-flex"
+    alignItems="center"
+    justifyContent="center"
+    {...props}
+  >
+    {!isEmpty(icon) && <Icon name={icon} size="18" mr="2px" />}
     {title}
   </Button>
 );
