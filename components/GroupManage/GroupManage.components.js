@@ -22,9 +22,20 @@ CardTitle.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export const SmallPillButton = ({ title, icon, ...props }) => (
-  <Button size="s" rounded variant="secondary" py="5px" {...props}>
-    {!isEmpty(icon) && <Icon name={icon} size="18" mb="2px" mr="2px" />}
+export const SmallPillButton = ({ title, icon, href, ...props }) => (
+  <Button
+    as={href ? 'a' : 'button'}
+    href={href}
+    size="s"
+    rounded
+    variant="secondary"
+    py="5px"
+    display="inline-flex"
+    alignItems="center"
+    minHeight="32px"
+    {...props}
+  >
+    {!isEmpty(icon) && <Icon name={icon} size="18" mr="2px" />}
     {title}
   </Button>
 );
