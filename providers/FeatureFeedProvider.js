@@ -7,7 +7,7 @@ import { Box, Loader } from 'ui-kit';
 function FeatureFeedProvider({ Component, options, ...props }) {
   const { loading, error, features } = useFeatureFeed(options);
 
-  if (loading) {
+  if (loading && features.length === 0) {
     return (
       <Box py="xxl">
         <Loader />

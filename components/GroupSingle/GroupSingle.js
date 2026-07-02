@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { useRouter } from 'next/router';
-import { ContentLayout } from 'components';
+import { ContentLayout, CustomLink } from 'components';
 import { useCurrentBreakpoint, useCurrentUser, useCheckIn } from 'hooks';
 
 import { currentUserIsMemberType, transformISODates } from 'utils';
-import { Box, Button, Card, Icon } from 'ui-kit';
+import { BackButton, Box, Button, Card, Cell, Icon, utils } from 'ui-kit';
 
 import GroupDateTime from './GroupDateTime';
 import GroupMembers from './GroupMembers';
@@ -122,17 +122,23 @@ function GroupSingle(props = {}) {
   // -----------------------------------
 
   return (
-    <ContentLayout
-      mode={props.data.mode}
-      title={props.data?.title}
-      summary={transformISODates(props.data?.dateTime?.start, {
-        withTime: true,
-      })}
-      coverImage={props.data?.coverImage?.sources[0]?.uri}
-      renderContentB={renderMembers}
-      renderC={renderMeetingDetails}
-      renderE={renderAboutAndResources}
-    />
+    <>
+      <Cell maxWidth={utils.rem('1100px')} px="base" pt={{ _: 'l', lg: 'xl' }}>
+        <CustomLink Component={BackButton} color="black" href="/my-groups" />
+      </Cell>
+      <ContentLayout
+        contentVerticalPadding="base"
+        mode={props.data.mode}
+        title={props.data?.title}
+        summary={transformISODates(props.data?.dateTime?.start, {
+          withTime: true,
+        })}
+        coverImage={props.data?.coverImage?.sources[0]?.uri}
+        renderContentB={renderMembers}
+        renderC={renderMeetingDetails}
+        renderE={renderAboutAndResources}
+      />
+    </>
   );
 }
 

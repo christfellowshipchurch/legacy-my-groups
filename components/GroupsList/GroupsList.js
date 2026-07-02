@@ -35,7 +35,8 @@ const GroupCardConnected = ({ group, handleClick }) => {
 function GroupsList(props = {}) {
   const router = useRouter();
 
-  if (props.loading) return <Loader text="Loading your Groups" />;
+  if (props.loading && !props.data?.length)
+    return <Loader text="Loading your Groups" />;
 
   const noGroups = props.data.length === 0;
   if (noGroups) return <Box as="p">You do not have any Groups right now.</Box>;

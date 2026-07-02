@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { GroupResourceOptionsProvider } from 'providers';
 import { useGroupManage, update } from 'providers/GroupManageProvider';
-import { Box, List, Menu } from 'ui-kit';
+import { Box } from 'ui-kit';
 import { CardTitle, SmallPillButton } from './GroupManage.components';
 
-import AddResourceContent from './AddResourceContent';
 import AddResourceLink from './AddResourceLink';
 import ResourcesList from './ResourcesList';
 
@@ -13,16 +11,9 @@ function GroupManageResources(props = {}) {
   const [{ resourceStatus: status }, dispatch] = useGroupManage();
   const setStatus = s => dispatch(update({ resourceStatus: s }));
 
-  const handleAddLinkClick = toggle => event => {
+  const handleAddLinkClick = event => {
     event.preventDefault();
     setStatus('ADD_LINK');
-    toggle(event);
-  };
-
-  const handleAddContentClick = toggle => event => {
-    event.preventDefault();
-    setStatus('ADD_CONTENT');
-    toggle(event);
   };
 
   function render() {
@@ -34,52 +25,26 @@ function GroupManageResources(props = {}) {
       return <AddResourceLink />;
     }
 
-    if (status === 'ADD_CONTENT') {
-      return <GroupResourceOptionsProvider Component={AddResourceContent} />;
-    }
-
     return null;
   }
 
   return (
     <>
-      <Box alignItems="center" display="flex" mb="base">
+      <Box
+        alignItems="center"
+        display="flex"
+        flexWrap="wrap"
+        gridGap="s"
+        mb="base"
+      >
         <CardTitle title="Resources" />
-        <Menu
-          renderTrigger={({ toggle }) => (
-            <SmallPillButton onClick={toggle} icon="plus" title="Add" />
-          )}
-          side="right"
-        >
-          {toggle => (
-            <List py="s">
-              <Box as="li">
-                <Box
-                  as="a"
-                  href="#0"
-                  onClick={handleAddLinkClick(toggle)}
-                  display="block"
-                  px="s"
-                  textDecoration="none"
-                >
-                  Add Link
-                </Box>
-              </Box>
-              <Box as="li">
-                <Box
-                  as="a"
-                  href="#0"
-                  onClick={handleAddContentClick(toggle)}
-                  display="block"
-                  px="s"
-                  textDecoration="none"
-                >
-                  Add Content
-                </Box>
-              </Box>
-            </List>
-          )}
-        </Menu>
+        <SmallPillButton onClick={handleAddLinkClick} icon="plus" title="Add Link" />
+        <SmallPillButton
+          title="Find Studies and Resources"
+          href="https://www.christfellowship.church/studies-and-resources"
+          target="_blank"
+          rel="noopener noreferrer"
+        />
       </Box>
       {render()}
     </>
