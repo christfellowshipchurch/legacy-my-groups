@@ -1,6 +1,11 @@
-import { ClientSideComponent, Layout, UserProfile } from 'components';
+import {
+  ClientSideComponent,
+  CustomLink,
+  Layout,
+  UserProfile,
+} from 'components';
 import { CurrentPersonProvider } from 'providers';
-import { Cell, utils } from 'ui-kit';
+import { BackButton, Box, Cell, utils } from 'ui-kit';
 
 export default function Profile(props = {}) {
   return (
@@ -11,6 +16,9 @@ export default function Profile(props = {}) {
         px="base"
         py={{ _: 'l', lg: 'xl' }}
       >
+        <Box mb="base">
+          <CustomLink Component={BackButton} color="black" href="/my-groups" />
+        </Box>
         <ClientSideComponent>
           <CurrentPersonProvider Component={UserProfile} />
         </ClientSideComponent>
