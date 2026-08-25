@@ -138,7 +138,26 @@ export default function LoginPage() {
                 </Box>
               )}
             </Box>
-            <Box mt="xl" position="absolute" bottom="24px">
+            <Box
+              mt="xl"
+              position="absolute"
+              bottom="24px"
+              width="100%"
+              maxWidth="420px"
+              px="base"
+            >
+              {/*
+                A2P/SMS compliance disclosure. Wording is the language
+                recommended by Twilio for carrier registration -- do not reword
+                without compliance review.
+              */}
+              <Box as="p" fontSize="xs" color="neutrals.800" mb="s">
+                By using your phone number to log in, you agree to receive an
+                SMS verification code from Christ Fellowship. Message frequency
+                varies. Message and data rates may apply. Reply HELP for help or
+                STOP to opt out. Carriers are not liable for delayed or
+                undelivered messages.
+              </Box>
               <Box as="p" fontSize="s">
                 <Box as="a" href="/privacy-policy" mr="base">
                   Privacy Policy
