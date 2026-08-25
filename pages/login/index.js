@@ -145,6 +145,8 @@ export default function LoginPage() {
               width="100%"
               maxWidth="420px"
               px="base"
+              textAlign="center"
+              opacity={0.6}
             >
               {/*
                 A2P/SMS compliance disclosure. Wording is the language
