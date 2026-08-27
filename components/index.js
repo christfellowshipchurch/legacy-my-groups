@@ -31,6 +31,7 @@ import Header from './Header';
 import HeroListFeature from './HeroListFeature';
 import HorizontalCardListFeature from './HorizontalCardListFeature';
 import JsonLD from './JsonLD';
+import LegalPolicy from './LegalPolicy';
 import ContentBlockCollection from './ContentBlockCollection';
 import Layout from './Layout';
 import Logo from './Logo';
@@ -80,6 +81,7 @@ export {
   HeroListFeature,
   HorizontalCardListFeature,
   JsonLD,
+  LegalPolicy,
   ContentBlockCollection,
   Layout,
   Logo,

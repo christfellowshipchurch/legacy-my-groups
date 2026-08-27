@@ -146,14 +146,19 @@ export default function LoginPage() {
               maxWidth="420px"
               px="base"
               textAlign="center"
-              opacity={0.6}
             >
               {/*
                 A2P/SMS compliance disclosure. Wording is the language
                 recommended by Twilio for carrier registration -- do not reword
                 without compliance review.
               */}
-              <Box as="p" fontSize="xs" color="neutrals.800" mb="s">
+              <Box
+                as="p"
+                fontSize="xs"
+                color="neutrals.800"
+                mb="s"
+                opacity={0.6}
+              >
                 By using your phone number to log in, you agree to receive an
                 SMS verification code from Christ Fellowship. Message frequency
                 varies. Message and data rates may apply. Reply HELP for help or
