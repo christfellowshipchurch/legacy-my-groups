@@ -1,7 +1,4 @@
-import { Box, Cell, utils } from 'ui-kit';
-import { Layout } from 'components';
-
-import { htmlToReactParser } from 'utils';
+import { Layout, LegalPolicy } from 'components';
 
 const policy = `<h3>Introduction to Our Terms of Use</h3>
 <p>Thank you for visiting this website or app, offered by Christ Fellowship Church, Inc. and our affiliated legal entities ("Christ Fellowship", "we", "us" or "our"). These terms of use (the "Terms of Use") govern your access to and use of our websites, including <a href="https://christfellowship.church" class="text-ocean hover:text-navy">https://christfellowship.church</a> and any other website, subdomain, mobile-optimized site, or URL that we own or control and that redirects to, or is otherwise associated with, the foregoing (collectively, our "Websites"), Mobile App and the services and tools related to the Websites (including, but not limited to, any mobile and other software applications downloaded from this Websites or obtained elsewhere) (collectively, the "Services").</p>
@@ -89,18 +86,12 @@ const policy = `<h3>Introduction to Our Terms of Use</h3>
 export default function Terms() {
   return (
     <Layout title="Terms of Use">
-      <Cell
-        as="main"
-        maxWidth={utils.rem('1100px')}
-        px="base"
-        py={{ _: 'l', lg: 'xl' }}
-      >
-        <Box mb="base" textAlign="center">
-          <Box as="h1">Terms of Use</Box>
-          <Box as="i">Updated August 26, 2026</Box>
-        </Box>
-        <Box>{htmlToReactParser.parse(policy)}</Box>
-      </Cell>
+      <LegalPolicy
+        title="Terms of Use"
+        lastUpdated="Updated August 26, 2026"
+        boldLastUpdated
+        html={policy}
+      />
     </Layout>
   );
 }
