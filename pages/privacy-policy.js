@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
       >
         <Box mb="base" textAlign="center">
           <Box as="h1">Privacy Policy</Box>
-          <Box as="i">Last Updated: Nov 15, 2024</Box>
+          <Box as="i">Last Update: Aug 26, 2026</Box>
         </Box>
         <Box>{htmlToReactParser.parse(html)}</Box>
       </Cell>
